@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean-François CAMBOT - Lead Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 20px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .location {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 0;
+        }
+
+        .left-column {
+            padding: 40px;
+        }
+
+        .right-column {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-left: 1px solid #e9ecef;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+
+        .right-column .section-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .resume-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #555;
+        }
+
+        .experience-item {
+            margin-bottom: 35px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            margin-bottom: 15px;
+        }
+
+        .company-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .job-duration {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job-location {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .job-description {
+            margin-top: 15px;
+        }
+
+        .job-description h4 {
+            font-weight: 600;
+            color: #333;
+            margin: 15px 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .job-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .job-description li:before {
+            content: "▸";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .skill-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .cert-item, .pub-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+            font-size: 0.9rem;
+        }
+
+        .cert-item h4, .pub-item h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .formation-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .formation-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .formation-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-photo-placeholder"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCADIAMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7s1NceL7If89LWXJ+hFfmb/wUQtRpvx70i7UbWaWxkz9Miv0y1qTyfFWidzIJY+f93P8ASvzl/wCCoETWvxD8PzhB/wAeUMwJHOROVoA96/a1h/tL9lK5nIzshs7jJ/D/ABr4C+Hx8nxpobHH/H0mc+/FfoX8b4l1j9inUZiBldHgkz7qUr86/CUuzxDpL8hluYuf+BCgDR+OHgvWdQ8T+G7yysHukMcyjyiGO1WweOvWvLrWzubfUdQt7q2ltZ1hb91KpUjgY4NfetyZG8B2iJpSyQR6jNv1Leu6E7+I8YyQc+vavk74tWhg+JOpMSdz2q9fZcUAbn7EbNb/ABv1aHAHn6NNn8CDX234eO7SvibCoJabwrLwB1wr18L/ALGtx5X7Q0akbhc6bcRqOn8Of6V97fD6KKfVfFNqxUyXHhm5G3vgAj+tAH4uMCCQRgikqzqcfl6hdJjhZWH6mq1AEkB/fR8fxCv2u/ZfXf8ABfwyqgNutwR61+KVvkuMDvmv0f8Ahn+1Vc/DfwL4X8NwWVnun05ZFvZsk+Yf4Mdunbn6daAPuyLT5WUZj4z2NO1eK30DSpr6/Pk26DrjJJPQAdST6V+Z3i39sDV5ryeS/wBTvpL0McJYztDsH1BwPx3GuX0H9u34labrdpc3VxJ4h0O2l3xWOpDzGQeokG1twHc5+lAH0d+19fyfD/TLLV5vAem+Jl1O5a4vrHVYPOZoHACqpAzEy7c7l5Gcdq+Mtd0D4SfEGA3Phq+vfh7rpOTpOrMbixLf9M5x8y/8CFfVHx0+Ptr+0t8F7e48GfaB4rsZRusYHPnDuSARnjp3r441jxPFc3Daf4+8KtDf/cOo2sf2S7B9XGNsn4igB19rnxE+HNstnfXUmq6Gw2oZJPtlm6/7LZO0e3FU7nxR4T8c2ltYX+kWvheeCMKl9YRk+axJLNKO/t6U3TrbUtGZpvBniL+0bduWtJMJIR/deFshvwqtqmpQaxF5PifSBobbv3F1ptkkKof4g8YA3Z68EUAW4PAXi3wqp1fwrfnUrIjJuNKl3cdcPH1/Ait648W/FTSvAKX8ejnQfDzT7J7y001LVr5+pWVlUM646j7tcZpui+INCuUvvC2ptejPyzaZKRIP95PvD6YrY8WfEH4gnULK88U6jdXyRp5YsrmQGNYyMFDGOFyPagDKi8HweOElvdCvLOC8YlpdKuJRE4Pfyy2AQT2yMVC/wX8YREA6SpYjIVbyAk/gHrpRo3wp8SfZLpPE2peFZ3H+k209gbpFb1QqQcexqB/Angu/mmj0X4kCSdFLR/2jp72qyEdAG3Nz9aAOQ07T9e8J+KbWBorzSNRWQbVYNGxGe2eo/Sv11/Ym+F58E+CG1e8hZdX1RhdTMV2HLdFwPY/qa+D/AICfDzVvGHiew8NeKw9zBYXC3avO/mNbQqA2Y2zwrenSv0P0H42aRplp9jWzZVRxGkkbBlx0Bx68dqAPfIGbV7uKzjLHdneyk4A/iP8ASitjwDo722lJfXKst3dqHIbjYuOBiigDO8UoF8Q+GZdwGy5cbcfeyhFfCH/BVTTUit9C1LGH+ysue+FlDf1r7v8AHM32W50CbcFzqMaY9Q2RXx//AMFTNAa6+Hek34t5JIoxcRvMqkqnAIBNAHdxlPFn7DMruN4m8OlvyGf6V+a+gZF/p0vdZYm6/wC0K/Sb4EL/AG/+w5awAbidCnh6+kZr82LD/RmiIyWhIOPoaAPc/iR8YH+Hvh2OG5gup7CXUGHk20qqrucEblYdu2D3rxD4l6rN4g8cwahbaddQw3WniXbKAMDB6nPau1/aUgW48DRyleU1GGTI90FZesANqvhmRYxN5mn7dvGGwSMGgDB/ZJvWH7R3hslSqvb3CKc5ByhFfoP8MYzN8VJ4CGCzeHLyIkcdXA/rX5/fA2aS1/ad8El7JdPaSWSIwIwIAwR2r7F8ffGiw/Z8dvFFzF9ou/sl3aWduf8AlrKwG1T7Z5P0oA/LTxRZNaeI9Wi2lRHeTJg+zkVlZAPy1peItVk1bV7u9kwJbiV5nC9AWYscfnWYMUATw3HlA/IrE9yORW8/jq+e3ii3ANCMRyDOUHtXME5NFAFme7a4Yu7s7nkliTmolmcHIYj3zUdKpwaANfw54p1Pwnq0OpaXeS2l5CwdZI3IOff1r7I+E37W/gD4mwp4a+N3hu1u4JFEUetJD80Z6Asw+ZfqM18R43nCjH41LFB+8KyExY/vDmgD9DfHn/BNnQ/Glide+DXjS1uoJB5kdlezhk57JKmcf8Cr5n+JXwS+JvwBiig8beGEv7C+BlIZ/tKptJXJkQ/I341k/A/44eIvg3rEd9oWpXCIDl4BIQreuUPB/Gv1Q/Z8/aD8OftL+DJoitrcX0Cf6bptygY4PG7Y3Y0Afjru0KVxcadfXmgTgndFLmRR7I64P5/nToSLNGv7SR9as5CUvLa5Uhj7nBzz2INfrF41/YP+Efi7xNFrMugz6c6vvltLGUxwzexXt+FfLX7SP7A3iPw54rl1z4UQC60mcAnSvPWK4gboQu4gMp69aAPkOV/BkzeYLLXLbIyYkniYKfQEpnH1p0HhbS9fjkk8P3dy88A8ySyvkCsyDqVdeCfY4/GvQ9d/Zz+N3h/TZtRv/Bt5HaQjdI8PkTMB7qjFj+VSfs8+HpfF3jexZrPbcCcW8kcabfMJPC7fXtQB774U1G3+Dnwfs2kidvFPiRAyoeXhth8qD6nrivoH9jb4fT/EnxWNX1G3J8PaE25i5yLq76hfcL1P4VU+KX7MGvarb6TqV1DaF7IgEQqfMjBwETjqB619X/s9+E7HwD8N7HSrJQsUZYux6ySE/Mx980AevKcdBgegorPjvAV++CKKAOL+LKmLRdLuQHP2fU7eTKDJxuFeEf8ABRq2W9/Z9vDjHzkqCMnOM/nX0F8WlMXgm6lz/qpI3zjOMOK8G/b80ptU+B8EqlgkF2rkf3gY24PtQBT/AGI9niH9jq1EZ62lzEcf7hH9K/NaWMtPdAblIkkX8mIr9C/+Cb9+br9l37Ijf6maaIgep3V+f2p2j6frmqQTHDRXky59P3hoA6/9o6V5PhsmxQVdrVyc9PlA/pXmb+Pri6vNCt2sDC9hD5IkMud+T1Hp1r0/47p9p+DjzKPuQ2sgYdwK8VSMyXenuW5Koc/lQBs/CbVp4/2gfA93cO8hTUhH5kjAn5m//XWt+2F8SX8X/ErUNPglLafpcrW0ODxuB+cj3zxmvP7y9uNG8UWN/Z4SazkeZJD/AAsOh/OuJ1XUJ9Qvbia7kM07lpHc9SxOSaAMa5kWSQkLjnpUWD6UoOPrT2Jb2oAjopdhoxzQABSenNAHNOWVowQp256ipLdd0oG3eT0Xrk0ANhYJIM4298jNadvPbyXbbY2kOPlLtgfQj0rPktXjkcOnlkHlTWjaWpMPmssbgDOwjacfWgC/FBNeXAnfyFCttzGwyv4DqK9O+EfxM1H4OfEix1/S7hrd4XXzkjPyTRnhgw9DXlNtqsS3kQljMcQ+UEncVH1xzXY/2QNXtHkTuu0bCfmB/lQB+sVv+1n8PLnR7a7u/Fmm6dcywrK1vPLhkJHQiua8Rftb/C9YkdvHWmEnsm5v5LX5PeJ9HvrSOGW7Lv5X7rzD/d/hz/ntXO7Djls596AP1O139qP4aazYyWqeP7GLzlKEtHIBj67am+Cfjn9mf4ZeJY/GGo+PtMufEJhCtFBay7FkwQZD8vLHPWvyxSEAD73tQEKk8Y70AftT8WP+CgXwJh8EOul+KRf387gLFZ2khZAPXIGBXkHhr/gpr4D8PaTHZj7VKFZju+ysCcnvzX5blS+OcY/SlEfJ6gUAfqld/wDBVnwZEmIrK9kP+za//ZUV+V4Ck/ezRQB/R18T7P7X4D1eLOMwls46YINeUftbeG7nxJ+z1fvaRNO0MUVyQndQvJ/AGvbPGkPn+EdZj9bWT/0E1z+v6cNa+B1zCRuM+ibc/wDbPFAHyB/wS3Jufg34mtFyxg1Nlx6cGvjb4o2X2P4o+K7Yr5Yi1OZSP+Bmvsf/AIJRskOlfEXTgR+41N8r/wADwK+Xv2i7I6f8efHMWzbjVJX247E5FAFb4mWxu/gLLtIP/Esib/vlua8J3/6Jpcw43RIT+lfRXiJfO+AF2SA3/EsnUcej8V86IRPoGkOBhfJUZ96AKPjAFLueONN26TBwew5Ned3ExnluNoyT6V3vjRDba+cLtWVCzsP4jgVwN4hgu2AOR/eHcUAVre0e4lCKpLZxiuw0TwnE67pI/MY8AdefpW/8KfCDeItQy8QkjH8QPPNfS3hn4aWekogeAc45OMmgDwXSfhNiw+0ywHfJzt28KO1YWt/DRzuCQ+URzlVr7Gu9BtksdkQHA71wV5pcLzsDGGHTJFAHydceAL2BvkG/6g1WPhG/tX3spjI5BC19broUIXCxJz3K1Q1fwhHPDgQxuT2xzQB8h3VjcxTN5gO/Oc9c1Gk8yRqDnYDnDcj6V7z4m+Gg+eaOLaAOg6159q/hqHSwLhU85f4ox60Ac/BFBrtulusXk3SL8rKQFPtiu6+H93cWkCxahb7oQ3lgjhkbtmuQlV7K2h1hICLNnaBSBjDDkZrqfCmsNf3CSSup80ZZGbAbHvQB9O/s7/s62X7SPjy88H6jdLa2sGni++0GFnDHdjb8rqevfNfU1j/wSP8AAMCDztVEreos3/8AZpjXDf8ABOkxp8ZLS+tmUwXWkT2kiockFGDDP51+mQFAHwsP+CT3w+A+XUmUe1hGf5k1Yt/+CUPw7Q5k1WR/YadbD/2WvuHHNLigD4wg/wCCWXwtiI3TzOR3FlbD/wBp1bX/AIJffCpP+Wl0Ppa2o/8AaVfYlFAHyfY/8E2vhdZgDffN9EgX+UdFfWFFAHOeI7drjQNRjH3nt5FH/fJrA8Ig6j8FLP5s7tOZCT6gMP6V2N1GGtpgeAUYc/SuP+DkIvvhLp1vuOCtxCT/ANtZBQB8Rf8ABL2M6X8WvjLpfOFvFkCn6n/GvE/2xLE2f7SfjX5fla4Rh2zlBXuP7BW7R/2v/i9pYIxvfPvtbANeb/t+QLD+0dq/7vb5lvC+T3OOtAHCwRC9+CdzG3RbW6BX9a+arHZJ4S0jYSPkGT75Ir6d8Iqt98LruIKcp9pif6mMmvlvQyT4MsmbkiaRPyagCXxnY/bXaRGxIkIwBzwQK5rSvCcepSWom3gyMAcjknPYV1fimTbECo3boI2wPpVXwRrTar8TvDgfZFbidUVAMKBnHT1oA+mfg38Mbfw9YG6MOWYAjcORXcahaHJEbfMDworsPEdsukQhYwqhEBYA7QBivDtS+POgaZrU0BbzfL+/IhyMjrQB376VqFxaMIFXfjp1NcNdaLepcOsiuGDc8Vct/wBrHwXYhFYvK54OFIIrrtC+J/hjxiPMs3V9/bGCtAHBxaZfRngtjsMUJa38k+BvOODkZr2L7HYTW4ZApLdCPSuU1zxPo3g2SSS7/h5O3H50AZ3hvwHPrRYXUW7n5fl6V07/ALMvhHxO8P26CSEqf3hiON31rz63/bF8I6DePFLbzxg/xIM5qnqX7aGmS3KLpkEslvnJJHP40Adp8Qf2FxP4FuNO8K3UY00v9pKTjMiMoz8p9+lfC8HhW+03Wr3TpM+daOVK8dAcV+tn7Pnxi0X4qaHbfZr5GnI+aF+GX2xXwv8AtjeEU+GH7SU3kIE07WYRcKOg3Hhv1oA9n/4Ju6lLafGPRrUrJG7CZXB6OCuCf0FfrWe3Nfjz/wAE/V1N/wBojRUslEsMNtcGWRGysY28EfpX6t3VpqOkaclwk09xMZBuBmPCe2TQB1Yx3NJmuP0izupZxdjULuQMSBHLdOyZ/wB3IrdivpopxC8eVI+Vi3p16nNAGp+NFVILwTNJwVCsQM96tAigBaKjMgEoXnHriigCJl+Rh1Fcp8O7BtH8JXtkmA1vdXOwemWLD+ddd1A5rk/AQYp4nt2XYY9SlUc5JyoINAHwB+yDPcab/wAFAviBbyyEG7tZJHVupJesb/go1AsX7RqkA/PpEDHHruYVqfCAy+GP+Cml9aOW/wBMtZImJxzjkVqf8FM9OSH4peHrsACSfTypOOflbj+dAHi3wnjN14I1WPklrlxgf7URFfK+i27Q+GZrZs5gvZUGf97H9K+s/gcA3h3VEwWIuY+nuCK+V4i0UOuwlSrQ6pODnry5oANUiNwdKRV3POix8HBJJKjtVbw/4N1Hwr8XdH0fUbcw3UeoQkBj2LCptUilubHTEgDGYgKgTqW3nGK+w/F/wej1bxz8O/EghnM0TW8N1vj+XftBBz9RQB0vxw+Hmt+ODb6dZ3x06y2gXMkancyjsDXy18UfhD4Q8B2r263d9c6pjMiwkEL7szcD+dfdfinxEdNhnRQfN2kLxkZr5UT4OeJNd8UalrN/b2/iG3nMm2xuWKqpYcPx1I9/SgD5Km0q2trnzIbWK6Uc4eYs2PwNfTv7NNr4U8RRCJI59N1BDh1aXchPtmvGvFPwU1rwJ4g8+70phbIfmhBYq3/Au1b/AMGtN1R/ECzW4+zqJQdqE5Iz098UAfaGteF4dOuLW2imyJTtUk9zXJ/tEfDvwh4O8Gxaz4huZTeTxgRQJJjecUeI/F9xDrGl5LSeW6hqb+2n4Dn8a/D/AE3X7bzZXs4uIlyQBjk4oA+BtW/s3U9UlmitY7Oz3EAMcsR68mvWPhH8LdM8VzINKay1afG5rATFJnAGTt5wT7HH1ryq00ee/shYm2hEvm+YZmU7umMdelfUX7NfwGvdW8O6nYXE9lZPdMk1tq+QLizZejRkEHPtmgD2T9n/AOF2iW2sWmt6BLdWEsEhWS3kkOFboysMda5H/gpv4aOr6r4O1OJGW6W3kiLAfKQCD1/GvT/hV4d1nwHr95DqGrwaos0uWukTY0+P4mHTdW7+118Mb74n/D/QDZRZu0vAny9cMOg/KgDzn/gklZY8f+J7jULeWNotOCRTOuEJL4IznrX6JeJvFl4gFjHmPyiWdywy69sH+leE/si+BLP4YaBqoa181pBHGw24bgZPHqK2PjB4kkvoxNp9/KIFbe1pG5MievzcjHtxQB6/ZeIINPhgnF5HsJ3MkpHPuDnFTX3xR0OyAzNDJMZAgYcrnPY45r5v8Sa9b6V4YtJF89TLCNyOwyre+efyrg9H1+bUbm2VY5XtVuo9pxgDkd+4oA+0NO8fJqX2gW0C+TDIVLB85IJ6jtWHr3xnhttQt9PhV4rqVQ4Dj5WU8Dn/AArwfSPHC+EdY1Rbm6ZZrq8aOO2U5bBbqf7orofHl/cvcaVqUStZxIph+0QupMqnlVUZ3de9AH0Jp3iOO6to98wV2UtkPuJ9ulFeIeDvHaW8kSXkJWYZ2PISWIwRzxx+JooA+lwOK5jwdiDxR4thA+UXUMn4tEM/yrqgMVzWiIYfHXiJD0lit5ePXaRQB+cl3fPpP/BULSZjwkvm5x3HSu7/AOCntgy+KfBd5/etpo/yYV5V8TdTOlf8FHvCdxKmFfUns+OOCQa9s/4KgW2bPwNe5IHmTwc+4B/pQB80/AORha6yGOFDwtj8SK+bNVhEGueN4c/MmsSce1fQ/wAB5c3Wt255BtlkB9w4rwrxhbpbfEf4ixA8LqGQv1FAGv8ACnQ49e8beE7ebBhWVpZAe6o24/yFfaGieJ4/EmqW+oFgbO3vkgjiHIBz94D1r5V/Zqksx8R/C63SCWJ5LqLBPOSgIr6e1fwFc+C4NU/sy3n/ALClQaokoblJUOSo+ozQBc+ItjPcXrBcqm7duHeszTLjySBh42xgkHGa7ua4t9at4LsBTHLGrqR3yK5/xBojvGzwEAIPuoOaAOR8S6FZa6uy5U3EbdVkOTmq2gfDKxtJA1rEsZbA4GMVctbG5MzKwOD3PWu0s7kaXZxosJuJDgYUc0AcN4h8Ni2ns44YiS7gMSOa+iNN8MW9x4Ws7WWISRtAFO8ZBFeS65Bc315DsgeORSCoOcCvc/Dt5dweELT7RYMYypXzgDj86APmvxt8BfDEGvPc2+nQoWJLxhflPvWn4d8FeH9CWMwWoglHOIzzW5qmtxa9r96lvMCI22AA5qbTdAe6u1Dodw5LY4NAEWjaFPr/AIptZILaQWsLdM9fc17P8TNOuE+G11bWMgiv413xyAZKkDkj3p3ge1h02PLKAwHUDBP1rmvir4g1XZeQ6NbyXN40BMca/wB5vlHHtkmgDgf2f/iRqviWPVtBvdReW8gjEsdzINzKFODmuz1ldYvkmjuLqONEI3TQEYI7H6mqXgH4Dn4ceGtYv9PW5uvEV3ZKZAuGdXJyQPQVRt/DPjqZVVNDfht2Llxzj6tigDFezgmv7e11SF7uB5SrmSYRB1H95m4AHtXpnh/wV4O1F45Ikt9P1CK4TYIncQ7cjkZOM9vSuTTw34/hiuVh8NRCGTGQbnlfcEPkfhiodK8DfEK8ngSbQQYTMpLrcgFec9moA1fGXhoeFtVvNXU288RmZorxW5DZPDADjGepNP1/xBceI/CNvBL5bTTTRrJISMgr0ZcE5Az0UZrlNN8M+NNW1rV5NMtpZrKWeVZUlvT5JIfDDG4EHI9cVrRfD/xPpGtwXxstOikBJjSS6GxCfRd/XjrQB6HfeB4bLQLa7jujc2Zi/fs5CkHByNvXNFUTo/i7XLW2h1FtOngicukf2lQN2OTgMc0UAfWgGa5u0Uw/EK/yxKy6fG+PQhyK6YVgttj8cRHB3SWBX64fNAH5f/tWhdF/bp8HXmzYi6+pJ+qL/jXv/wDwUwtXuvh54Nu15WLUCc+zRcV4l/wUMWDS/wBp3wpfKdhj1CzZ29GcHH8q+iP+Cg8a3X7POiXgAYJeW+G/3kxQB8WfANSde1OM9GsW6+xBrx34l2xtfjF49VV+Wbypz/wJRXsPwCdR4vnjPV7KUD3wM15b8as2vxz8Uwgf66xtZQPbYKAOT03Vb3QtMsNSsX8i7srwyxSA9GwCP5V+hnwv8d3nxv8AgtB4gtbcw/aFe0uYV5EcwGGx7HORX52Ek+E5OAc3HH4oa+6/+Ce87S/s7yAuQYdakBGe3BoAzvhFrcy2txp1y0ss9hM1q3mZ+UA9ea9gSyha3yBlT0BrxfxBo994Y8datJHJ5Md5dyzqQcbvnIIruH8dNZaJ9omjRFVTnLdfegB3iaSDS1ZsKXY4HGKxU+IcOh2UiRJaSXuMo11kpn3xzivEfGPxF1XxHrjm2IKA4SBX5I/CuD1fT/FupMziK4WLsSDhvbNAH3B4Z8Waf4q0e3luhaWV9/y0jinDJx3Vjjj611sPjzVdHMFtp0Fpf6OVK71vMy7sdNm3GPfNfmrfXfjDRNWs2b7SEQfKEBxivefhJqmr2iQTSQTxtNlvNBYr+IPSgDsdDafRvGd8t+BavPO0uOowxyAK998MmOSASfLjGa+c/inrEmm6fDeNGwvC+VMgxu+hrZ+FXxXvL2OKy1O2k2z/ACpKDwD2BIoA+nLK7CQHauSD6gH2rkdJuV1L4galcvI8MMaKBuPQe340y51FbW+skST944zsU5Jx6e9bNlqC6D8OL4pY5vdY1BoEMwBMcag5bJwcfT1oA9n8IaJZ69pIZ9Q2kbZJgBnKnoCfwrodX+FOga1CivBJCVJO+3kKk5H41Q8IQrZeEAqQxRSi1j+4MjGOB7138JzFGcYyoP6UAeL+L/hpqWiaNeXFvfW4s4VZi7bklji6HnJBOO/FY/gnWLa3vLb7PbXQsZJRG146M6Mw4B3sQP517zqmnQ6vptzY3AJguEMb7Tg4Poax9T8MlPCiaRpu1WjVEiMnseT9aAPkf4Pauukax8QpIyshbXHX5skDqcAYNeizJoHiDxBCmrxzo8gV4vs/yKTnnkn8x09B3rlvgn4dsJI/iH9rSPzV8QZVpe7fNxxXteg+CrXVLOY/YVZAnEvmgKzg8ADtQB4iuojTfEl5YhfOiheSGKdlwGAPrkjjNFb6fCbU/tuordkpI6yeVDkMVPXrnAz60UAfUI4rl9SlEPxB0VSP9baTrn1xg11Fcn4kUr438KSZ43XEZ/FBigD87v8AgqVaRWXxJ8M323Y/2ywlY+oDEV79+21AdS/Y2065Vd5S402bcD23DNeK/wDBW6NEv/DUhPz/AGVZ/wDvmdQP51738cY11j9g7zWG8rpFrMM+23mgD4I+A7EfEqwj3cSRTqR9YzXB/tBRGP8AaEvXxtSbQoCvuQuD/Kuy+CchT4n6Lg9ZSo/EGsT9pm3A+M2iN90vorA++HNAHlNuPM8LzDPKXKn9Gr7b/wCCdd/9o+DHii2A+W31w8fWM18S2KhtE1KLGdjo/wCpFfZv/BN4Bfhv49g/iXVIXx6ZQ0AemfFqw8/QYvEEkY+zWuvX1iwVd3OVK5/WvKZbp/EnhO+iEqkQytGpb5d2Oxr6U8ZeHV1j4LeKNOtVHnLr80/P99kDD6V8Q6N4wGj6trGnOzQiQ7RFISQrDhgPTpQByGm+Pb/Q/iBBZabpUGoGKXY0Ug259Rur6Y0nx7qF3GGvvBs1swA4jdZMfmK+evhPcW0nxAvZmhWSbzCUVhnH0btX15b67axaTHJNCnnBeVBGaAOQ1PxvosgjN1oc/nDopgGa39K8WTS6fH/Zeg/aHJx5UyBNv414V8Vv2hD4U1R4k8OwXUSsdsrSHcfTIrqvhH+0Hf69dWLvplrb25H7zYeR9KAKn7V+k/EO88KQajb6NZpp8H7ydFlJcdMBeOa87/Z18c6rr94bC9XakJ80RbecjsM19MfF/wCIlpq+gG2eZXVhlgTncK+UbPUzp3xJttQtJRHal/LeMKMYPGDjp9aAPsHw/qov7uK9uN8cMKEFCcfMDwR6Gs0/tH+AfBmsabpviDWmZtIu5rvUJJWLeTleIl9W9RWF8HdNvvF/jHTbW0M0WnCTzruUOcFFOce2T6V8i/tf/CvxTY/FHxpqx0eZdFvNZmNrcLt8tuR2z1HpigD6T+Ef/BUG3f44+JrLWtOlXwRrssNpppV/nsQvyq5HoRyQK+/dO/az+Dl2+nWsfxF0Fbm7xHDBJdBHLZxtIP3Tn1xX4G2fwN8cXX9mzw6LL5F4okt7revlfexy2cA57da7/Q/gd488MQ3eqXuj2yXpEktreSXkbEyRrvbZgkF9oJA60Af0HpIkkaujB0Ybgy8gj1Bp6ZDZ9a/Pj9g//goevxFGleBPiPcwQeIpl8vT9TCrGlzt4VHAwA2Bwe9foOOooA+cf2XbaHUtV+J0N0guIjrLbo5VyOrV9AaRpNpolmLazhEEAYkIucDJrxD9l+wuLPWfiJ56hRJrDsnOcjLVZ/bE+L3i74LfCq31/wAHQWdxqD6nb2covULosUhO5sAjkAZoA80/ao/aIb4ea5qHhzQZIj4mnj/dyOm5bYMvDHnDNnkL+NFfm54s8beKfGPi3V9cuL99XuriZp7l5zy4/wBjuoA4Az+FFAH7w1y/i3EeueF5On+mlc+gKGuormfGsPmTaFKDgxX6H8CDQB8L/wDBXHQUk8M6Fqw5lW1e3Bx/CJVf+lex3if2/wD8E+5izBtvhwEH/dArkf8Agqpo5vfgdbXKgFonlUH0+XP9K6n4G58Uf8E94Ypm3M/huZSf91Cf6UAfnt8JZxB8R/DzjobtBn68Uz9rG1+zfFHwlccgy2M0H5Oxql8N7oQeMPDVwTgLcwMT9SP8a6P9s+zaz8YeCbnGF868t/xDf/XoA8EtTIun6yItrP5agBjgZD96+yf+CYMcuoaN8S7VhiSK4tnIHToa+O9NjDRaurdCpyP+BCvtD/glTcpP4o+JdgPvSRW0hH0JH9aAPqRYRa+EPiDGWJI1q2deOm6Na+MvjH4GTR/FdxryRgW0pzLEqE84+9kV9y69FdaJb+L45IFS0vbm2dZG74TH86+dPij4dbV7Mbdx2kjrgEH1+tAHwvf67d6Dr893YosZL7hGHIJHYj0r0HTPirq2o6Z/Z7yMs5XcJR6+lch8YvAepeGb2TUYbSX+z5H5TO4xnuDjtVHwtrNrdyqwYxuQA0IYAL26c5oAyfF2lXuvXc013cTXBX5iwJAP4VreCd+iWPmrNLb54Rd5wT9e1dJrUtnLPHbxXCRoYtzKX27ffnrmuD1C4a2SQQzvcQxnPBwpFAHYy+INW1i9ginnji2EtvZtwPoAa6rw817BrMEAgXU7+8by0tolHJPTd6Adc15n4avTqPlR7FnleUKluzAuT2Kg+tfanwR+Cc/hW3HiDVolE0kGy3SUglN3U4Hp0oA9v+BfhK38GaNb2samXUJMNdSOwYhzyVB9B2FeOftz/Cf+z/CVtqIvX8y61ea8eIITgSbQP5V9H/DnRvsV3gEEN87ZHUnuDXrXij4eeEvix4SfRPEtjBq1nGQskchIeNxyMEHIPTFAHwL4H+CWqWXwP8OabcCKSVNVv7iOKJg8uxoEKFiM45zweldL8Kfg14c074YXGs+NtSGm29lftPbEyBi7mCSNhtAzk7sdO2c19I6h+yfp1h4Si0bwl4k1fSGtL59SiEk/mJI7AAxyZGWT5R8p6V8eftn+Oh8DfDX9gXGnWU/jLWJGdYztSG0AQ/v0RcbyecdACaAPzQv9Wl0jxRcS6dcSQi1uXFtNGSrIFc7WB7HgGv2N/wCCf/7ftn8bdHsvBPjKT7J4t061CHVLqeNE1DHCnHB34xnrmvxWmkaSVmZiXJJbPrVnTZ7m2vIp7WZreZGDJKj7CpHQ57UAf0e/CDwnq/hfUvFL6naiGO8vfPgkVwwkQ59CfWvLP+CjmpR6Z+zDqrnzN8uoWcSNGcFWLnBJ9MZ/Ovk79jn/AIKD+NG0fTPAPie3i1rUYSsVnqNyxMtwhIABcHBI9T1Feo/HL42a/wDE6bxj8MdZsrC6s1iy1rJABIydSysDwycHIoA+Z/gh8PtK8TeF9X1W8d7b7IjSNdgjZGijsp+82eg9cUV4dq0fjT4Q3d1pltcXWoeGpSQzwoX2p3DqOhA70UAf0D1y/wAQ5TZ6PbXQG5oryFgF93x/Wuoqjrlqt5pcsZ7YP4g5oA+Xv+ClOmm//Z1u5VBYQykcf7SEZqH9iY/8JF+w1aWWc79LurY+x2MK3f8AgoFp9zf/ALOl1HAQqi8habIzmPa+R+eK5D/gmpeHVf2RVgXllkuoAOuOCKAPzw0JDp+uadCv/LC7jXP0kA/pXpX7eMJh1HwVJt4GrXIJ9Ayg15q7NF4nkBGGjv3X8VlP+Fe5ftk+EdT8YaZ4Si0yzkvL19RjICLnaDGCWJ7D3oA+SdOyZNVTOMxsa+sv+CV2qWukfF/x213cR28L6THKTIwUE+YBVf4VfscaTr0d1NqniGWa7ZDG1rbIqoMjBG8gk/XFep/DH4V+HfAfxp0Pwp4f0sWkNpbtqeoXUjF5blk4RWY/w7jnAwKAPq34hWk2v+HdVht1DT+UWhHqV5UfpXzfFq9p4t8Px3cDqSco4HJR1OGUj1BzX1HBKHBzgn06ivzm+MWv6j+zf+0RrNk6snhfxJJ9vt0x8iu3+s/WgDqvG3hmPWLaS3uniuIHAV14zj1+teQ+J/2bmmnbUfDcjRXJXCx4GDxXstp4nsNdtYbpH+WTnKnjFdRosgdY/IG9QM4U5oA+H9Z+AnjrTryVlhEztw+wgYH9KPDn7PvjTXNRRXMluXbyyPvFfyr74udOE+V8vaZVx8x6+9WfBfhqNL2SOWBAy4xNnmgDK/Zs/Y80TwlbQ3+pRG81FvmMs6glD6KK+h/F+gQ6dBbWcKjZjAAWtbwQgW1VAAAnByOtZHxO8Q2WlzLc3t3HbW0Ayxc4/ACgDR8NiDQbV729lFvDCu6R5DgIo6k/hXD/ALGXxw/4XR4x+L8tmT9lt9WC2TudylAu1Wx2zjP418nftQ/tPT6toNxouhyvbaa6lHcEh5fr7V63/wAEg/DE9r4B8aa9KMQ3uoLFEfXYvP8AOgD7C8K/Ftb3xHd+HNdszpms2zFfky0cg7Ed+R+FfOf/AAUv+AkXxd+D/wDwkuh6c914x0Bw9utsm6a4gJw6Y6kDO72r6R8c+Bmv/Gmg+IrJAlzbuIbkgfej6gn6c14x8a/iXPrPjW0ttKleAaVKyfaI2wS3GenagD8c/C37O/iE+JIYfGGn3HhvTFQzzS3QCu8a8sEGevvX154J/Zr+FXizwfBDbRnQry8jklgnmfzGWJVz5s6nPB44HPNfcGj/ALOPw4+OukjX/EHh1E1mRWt7ia1meISjuSqnHPetyP8AZN8D+HZJrq3s9qNAts2+4kH7pei9eB9KAPym+Gnwu1XwN8b7bTLezuLqDTLpZmvoYZDbwxEg7mkwQFPB55Ga+5/ip+z38QtZ+PFl488JafZ3mky28DyF7gDeSmJBgA5GOhr6cS20bwXpdvZPfpZ2nleXGkkhZGUDpkg5+hNYq+K9J0m5W1sNcha0YAizgmdTFnumMce1AHyd8dv2NPHfiyK/m8LafFDd3cTL5crlEVmHPRaK+s31jStQkdYtdeXAJf55tqjuTziigD2qsjxd5w8O3rQMElRNwP0PNa+eag1CLz7OaNgDuQjkcdKAPDP2yUe6/Zp12RRuZUikPpjof5147/wSfv1uPgBqVqgz9n1SaM5+pP8AKvcf2idS0rVvhBqvhKXU44tU1S1WGKNB5jJ8wJYgdBgHrXzr8IvCNt+z54Jn8MeE9YvJl1G4N3dzykAs56qMfdH0oA+ZdA+BWveJPGWsy34bR9Mh1O4zczJlpP3zEBFPXtyeK+qdYnll0eS1jUJiFUbgZIChQSfcCuW13XL3TZzHeRMI5G3CQ/N39a0bDVor+Dlg2eOvUUAZHwq1Q6dfSpuCskmGH416X4TtIz8Y9R1YDmXT1iBI/wBoE4rxLxHpsvhfXl1K0VjayMDIFbNeseCdZj1bVNNv1n2bVMcsfqDQB77pwMi5xjPNeJfth/s+RfHT4azi0UJ4g00G4sJsY+YDlT3weldR8XPjfofwG8BzeJvEK3UtlG6xrFZxh5HYngAEgfiTXb+AfGmm/EfwbpHiTSi7adqdstxEJRhgrDoR6jpQB+PPgH4h6l4YvJ9F1cyRXFtIYXikGCjA4Ir6P+GPj8wX4jz5sMg6k8jPtXf/ALYf7FTeN7m68beB0WPxFGvmXGmgYS9UfeKntIOw/ir4p0Hxhe6JL5M3m289u5SRHBVkYHBUg9CDQB+gdpdJdxB4pfMwRgntWnoFzv1hVVuW+UhTXhvws+KtnrllCjSATKOc8Zr0aPxVb6WDdQg+aGLZPrQB9Ey+K9N8E6JcalqUwtbOBMsXPU46Ad6+DPjl8cL74gazPqErNDYI+22t1PAT+8fc1d+L/wARNW8WOsV7dtLAhwsScKv4V4T4zuxBa4ySSOlAHGeM/ELaisokIZRkgYr9lv2C/h0fhv8Asw+EbWWMJd38J1CfjBJkORn8MV+U/wCzT8DdS+P/AMXNK0e3gb+zIZlmv7jHypEpyQT6nGK/b3WNKvtP8D3Gm+GzHbahb2Xk2G/ARGVcLnII/SgCH4l3k+n+Atdurd/LnitXdWz0wK+EdBuJr3Uj5jtMJm83zM5OT1zX1n4qvtc0j9nHUZfGBWLWhp7Jd7ZRIAx44YAA/lXzn+zb4Jn8ZSwO6kw7vvH+4D1oA+qvgloTaV4KtmcENOxkyT2PTNa3jXUF0vTbuR0MrtjaW5Cr3PHNb8Qt9Gs4bcMscaLtUHgACvB/2g/iVDcWEeiWV7Haxs+Lq6/jRR2Udc0Add4Ru7Dxd4OaLUoYL5ZZ5ExIu6MKPu7h24/GuV0r4d+DdduzqOlxvomowmS3+zF8wOxBUHB5xzxgiuF8HeLte8SaQvhL4eaZPDay8XWr3wG73YDkKPxzXuHgT4b6d8ONBEesagdTvmYu08/qey96APOtN+H2t+HJ77Tb62E1vd2ssP2mHkfdyPcdO9FevX9+ksaBWzEegfnj2PUcUUAW/F/xF0Pwbbu97ciSdP8Al2hOX9s+n414P4z/AGh9X14SQaTH/Ztmy7SyHMn/AH1/hRRQB5PPrMUtyZL/AMyQk5aRjnJrX0u/06U/KyAHhaKKAOpk8Pafr1isMmyTK/L3rzDxZ8Or/wALSm5sC8lvnO0DpRRQBzp16O9t3tLwBMjBB65rCs/EEvgnUgfNP2Rmyrg8qe1FFAH0zaaZ4b+MvgGKx1ywt9Y0y6RTJBMMgsO/sc16P4Z0Kx8NaJZaXp1slpY2kYihgiG1Y1HQAUUUAaFygkiI/HPpXy9+1J+x9p/xg0y88T+E7SKw8cWyF7m3QbY9SQD07Se/eiigD87NPuNV8GaxLbTrPY3cEhSSGRSrIw6gg16XZfE++1CCGGS4JYDHvRRQBrwRSaqodyT3LGuL1Pwhqfj3xlp3hrSIjPeXThdwHCL/ABM3sOtFFAH6qfsjfBbTPhZ4YW3sYUUxIFkn2jfNJ/E5NfQ/WiigDyP9qGwutc+Fkui2alp9Tu4bXjqFLZP6Cm+D7bw58BPBkI1O6itJjGMQDmUj2HWiigDxf4g/tB6p4z1SSHRFa1s0+VSpyx9yegp3w4/Z71Tx/dLqevySRWRO8l/vP+dFFAH0jPJ4e+D/AIT/AHEUdpbxLwq43O3ue9fPuu+NNX8ceILbUfMZLOOUeXBnjFFFAHtEd9HLpUL7gzBQPpRRRQB//9k=" alt="Profile Photo" class="profile-photo"/>
+            </div>
+            <h1>Jean-François CAMBOT</h1>
+            <h2>Lead Developer & Architecte Solutions</h2>
+            <div class="location">📍 Biarritz, Nouvelle-Aquitaine, France</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    ✉️ <a href="mailto:jfcambot@gmail.com">jfcambot@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    💼 <a href="https://www.linkedin.com/in/jf-cambot">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    🎵 <a href="https://soundcloud.com/stailer">SoundCloud</a>
+                </div>
+                <div class="contact-item">
+                    🏢 <a href="https://www.acheterduneuf.com">acheterduneuf.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h3 class="section-title">Profil Professionnel</h3>
+                    <p class="resume-text">
+                        Lead Developer passionné avec plus de 20 ans d'expérience, je conçois des applications robustes et performantes en m'appuyant sur des architectures modernes et des composants éprouvés comme Telerik Web et leurs wrappers Angular. Côté frontend, j'adopte les meilleures pratiques pour garantir clarté et maintenabilité, notamment l'approche "Mock Data First".
+                        <br><br>
+                        Expert en gestion de projet et méthodologies Agile, particulièrement Scrum, je combine expertise technique approfondie et vision organisationnelle pour livrer des solutions innovantes dans le secteur immobilier et au-delà.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Expérience Professionnelle</h3>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Acheterduneuf.com</div>
+                            <div class="job-title">Lead Developer</div>
+                            <div class="job-duration">Juin 2018 - Présent (7 ans 4 mois)</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <h4>🏢 Réseau Social d'Entreprise & Drive Documentaire</h4>
+                            <ul>
+                                <li>Conception responsive pour le secteur immobilier</li>
+                                <li>Backend : PHP Laminas containerisé (Podman), PostgreSQL, Elasticsearch, Redis</li>
+                                <li>Frontend : Angular 20 (TDD, Mock-Data First, JWT, responsive)</li>
+                            </ul>
+
+                            <h4>⚡ API & Services Node.js / TypeScript</h4>
+                            <ul>
+                                <li>Développement API avec Fastify et Prisma / PostgreSQL</li>
+                                <li>Pipelines CI/CD GitLab</li>
+                                <li>Azure Storage et automatisation documentaire</li>
+                                <li>Paiement en ligne via Gumroad</li>
+                            </ul>
+
+                            <h4>🏗️ Architecture Web API / Elasticsearch</h4>
+                            <ul>
+                                <li>Authentification unique (SSO) multi-applications</li>
+                                <li>Suivi des statistiques d'usage en temps réel</li>
+                            </ul>
+
+                            <h4>👥 Leadership & Gestion de Projet</h4>
+                            <ul>
+                                <li>Scrum Master : pilotage agile (YouTrack, Space)</li>
+                                <li>Analyse technique et fonctionnelle de projets</li>
+                            </ul>
+
+                            <h4>🛠️ Outils & Plugins Internes</h4>
+                            <ul>
+                                <li>.NET Core & Blazor WASM (MVVM, IndexedDB)</li>
+                                <li>Plugin JetBrains IntelliJ pour restauration BDD</li>
+                                <li>Démon de messagerie type RabbitMQ sous Linux</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">COSOLUCE</div>
+                            <div class="job-title">Développeur / Chef de Projet Technique .NET</div>
+                            <div class="job-duration">Octobre 2009 - Juin 2018 (8 ans 9 mois)</div>
+                            <div class="job-location">Pau (64)</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li><strong>Bureau des Élus :</strong> App mobile responsive avec votes en temps réel via SignalR (utilisée par CDAPP et SMTU)</li>
+                                <li><strong>Bureau des Assemblées :</strong> Gestion complète des assemblées délibérantes avec signature électronique</li>
+                                <li><strong>eFluoPrésences :</strong> App mobile iOS/Android (Cordova, Xamarin, WebAPI v2) avec mode déconnecté</li>
+                                <li>Stack : ASP.NET MVC 5, SQL Server, Telerik Kendo UI</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Héliantis</div>
+                            <div class="job-title">Développeur Logiciel Web</div>
+                            <div class="job-duration">Octobre 2009 - Octobre 2017 (8 ans 1 mois)</div>
+                            <div class="job-location">Région de Pau</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <h4>🏢 Intranet TOTAL EP</h4>
+                            <ul>
+                                <li>Applications Congrès et Écoles v2 (PHP5/Zend, ExtJS)</li>
+                                <li>Intégration ActiveDirectory et Google Maps API</li>
+                                <li>Applications mobiles iPhone/Android (PhoneGap, jQuery Mobile)</li>
+                                <li>Développement SharePoint 2010 et services ASP.NET</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Otidea</div>
+                            <div class="job-title">Développeur Web</div>
+                            <div class="job-duration">Janvier 2006 - Octobre 2009 (3 ans 10 mois)</div>
+                            <div class="job-location">Région de Tarbes</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li>Développement Framework MVC interne et CMS (PHP/MySQL)</li>
+                                <li>Système de routing, vues Smarty, composants réutilisables</li>
+                                <li>Management d'équipe et méthodologies de développement</li>
+                                <li>Module e-Commerce basé sur framework propriétaire</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">JVS-ADIX</div>
+                            <div class="job-title">Développeur Logiciels</div>
+                            <div class="job-duration">Janvier 2004 - Janvier 2005 (1 an 1 mois)</div>
+                            <div class="job-location">Région de Tarbes</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li>Développement 4D : gestion frais de déplacement et ordres de mission</li>
+                                <li>Architecture Web connectée via connecteurs PHP</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Profession Libérale</div>
+                            <div class="job-title">Développeur / Technicien Informatique</div>
+                            <div class="job-duration">2001 - 2003 (2 ans)</div>
+                            <div class="job-location">Région de Tarbes</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li>Logiciel cabinet d'avocat (Access/VBA) : facturation, comptabilité, CRM</li>
+                                <li>Formation Windows/Office, maintenance et assemblage PC</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h3 class="section-title">Compétences Techniques</h3>
+                    
+                    <h4 style="font-weight: 600; margin: 15px 0 10px 0; color: #333;">Langages & Frameworks</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">C#</div>
+                        <div class="skill-item">.NET Core</div>
+                        <div class="skill-item">PHP</div>
+                        <div class="skill-item">TypeScript</div>
+                        <div class="skill-item">Angular</div>
+                        <div class="skill-item">Node.js</div>
+                        <div class="skill-item">Blazor</div>
+                        <div class="skill-item">SignalR</div>
+                    </div>
+                    
+                    <h4 style="font-weight: 600; margin: 15px 0 10px 0; color: #333;">Bases de Données</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">PostgreSQL</div>
+                        <div class="skill-item">SQL Server</div>
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">Redis</div>
+                        <div class="skill-item">Elasticsearch</div>
+                    </div>
+                    
+                    <h4 style="font-weight: 600; margin: 15px 0 10px 0; color: #333;">DevOps & Cloud</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">Docker</div>
+                        <div class="skill-item">Podman</div>
+                        <div class="skill-item">GitLab CI/CD</div>
+                        <div class="skill-item">Azure</div>
+                    </div>
+
+                    <h4 style="font-weight: 600; margin: 15px 0 10px 0; color: #333;">Méthodologies</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">Scrum</div>
+                        <div class="skill-item">TDD</div>
+                        <div class="skill-item">MVVM</div>
+                        <div class="skill-item">Agile</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Certifications</h3>
+                    <div class="cert-item">
+                        <h4>MCTS: .NET Framework 4</h4>
+                        <div>Web Applications</div>
+                    </div>
+                    <div class="cert-item">
+                        <h4>MCPS</h4>
+                        <div>Microsoft Certified Professional</div>
+                    </div>
+                </div>
+
+
+
+                <div class="section">
+                    <h3 class="section-title">Formation</h3>
+                    <div class="formation-item">
+                        <div class="formation-title">Autodidacte</div>
+                        <div class="formation-details">
+                            Informatique<br>
+                            2000 - 2018
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
