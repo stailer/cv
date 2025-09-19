@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean-François CAMBOT - Lead Developer</title>
+    <style>
+        @page {
+            margin: 0;
+            size: A4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            font-size: 11px;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            min-height: 297mm;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 15px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        .header h2 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .location {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 0;
+            min-height: calc(297mm - 180px);
+        }
+
+        .left-column {
+            padding: 30px 35px;
+        }
+
+        .right-column {
+            background: #f8f9fa;
+            padding: 30px 25px;
+            border-left: 1px solid #e9ecef;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 6px;
+        }
+
+        .right-column .section-title {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .resume-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: justify;
+            color: #555;
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+            page-break-inside: avoid;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            margin-bottom: 12px;
+        }
+
+        .company-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .job-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 3px;
+        }
+
+        .job-duration {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job-location {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .job-description {
+            margin-top: 10px;
+        }
+
+        .job-description h4 {
+            font-weight: 600;
+            color: #333;
+            margin: 12px 0 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .job-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-description li {
+            margin-bottom: 6px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .job-description li:before {
+            content: "▸";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 8px 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+            border: 2px solid #e9ecef;
+            font-size: 0.75rem;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 4px solid #667eea;
+            font-size: 0.8rem;
+        }
+
+        .cert-item h4 {
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: #333;
+        }
+
+        .right-column h4 {
+            font-weight: 600;
+            margin: 12px 0 8px 0;
+            color: #333;
+            font-size: 0.85rem;
+        }
+
+        /* Optimisations pour l'impression */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            .experience-item {
+                break-inside: avoid;
+            }
+            
+            .section {
+                break-inside: avoid;
+            }
+        }
+
+        /* Responsive pour écran */
+        @media screen and (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="" alt="Profile Photo" class="profile-photo">
+            <h1>Jean-François CAMBOT</h1>
+            <h2>Lead Developer & Architecte Solutions</h2>
+            <div class="location">47 ans, marié, 1 enfant</div>
+            <div class="location">📍 Ondres, Nouvelle-Aquitaine, France</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    ✉️ <a href="mailto:jfcambot@gmail.com">jfcambot@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    💼 <a href="https://www.linkedin.com/in/jf-cambot">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    🎵 <a href="https://soundcloud.com/stailer">SoundCloud</a>
+                </div>
+                <div class="contact-item">
+                    🏢 <a href="https://www.acheterduneuf.com/">acheterduneuf.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h3 class="section-title">Profil Professionnel</h3>
+                    <p class="resume-text">
+                        Lead Developer passionné avec plus de 20 ans d'expérience, je conçois des applications robustes et performantes en m'appuyant sur des architectures modernes et des composants éprouvés comme Telerik Web et leurs wrappers Angular. Côté frontend, j'adopte les meilleures pratiques pour garantir clarté et maintenabilité, notamment l'approche "Mock Data First".
+                        <br><br>
+                        Expert en gestion de projet et méthodologies Agile, particulièrement Scrum, je combine expertise technique approfondie et vision organisationnelle pour livrer des solutions innovantes dans le secteur immobilier et au-delà.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Expérience Professionnelle</h3>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Acheterduneuf.com</div>
+                            <div class="job-title">Lead Developer</div>
+                            <div class="job-duration">Juin 2018 - Présent (7 ans 4 mois)</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <h4>🏢 Réseau Social d'Entreprise & Drive Documentaire</h4>
+                            <ul>
+                                <li>Conception responsive pour le secteur immobilier</li>
+                                <li>Backend : PHP Laminas containerisé (Podman), PostgreSQL, Elasticsearch, Redis</li>
+                                <li>Frontend : Angular 20 (TDD, Mock-Data First, JWT, responsive)</li>
+                            </ul>
+
+                            <h4>⚡ API & Services Node.js / TypeScript</h4>
+                            <ul>
+                                <li>Développement API avec Fastify et Prisma / PostgreSQL</li>
+                                <li>Pipelines CI/CD GitLab</li>
+                                <li>Azure Storage et automatisation documentaire</li>
+                                <li>Paiement en ligne via Gumroad</li>
+                            </ul>
+
+                            <h4>🗃️ Architecture Web API / Elasticsearch</h4>
+                            <ul>
+                                <li>Authentification unique (SSO) multi-applications</li>
+                                <li>Suivi des statistiques d'usage en temps réel</li>
+                            </ul>
+
+                            <h4>👥 Leadership & Gestion de Projet</h4>
+                            <ul>
+                                <li>Scrum Master : pilotage agile (YouTrack, Space)</li>
+                                <li>Analyse technique et fonctionnelle de projets</li>
+                            </ul>
+
+                            <h4>🛠️ Outils & Plugins Internes</h4>
+                            <ul>
+                                <li>.NET Core & Blazor WASM (MVVM, IndexedDB)</li>
+                                <li>Plugin JetBrains IntelliJ pour restauration BDD</li>
+                                <li>Démon de messagerie type RabbitMQ sous Linux</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">COSOLUCE</div>
+                            <div class="job-title">Développeur / Chef de Projet Technique .NET</div>
+                            <div class="job-duration">Octobre 2009 - Juin 2018 (8 ans 9 mois)</div>
+                            <div class="job-location">Pau (64)</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li><strong>Bureau des Élus :</strong> App mobile responsive avec votes en temps réel via SignalR (utilisée par CDAPP et SMTU)</li>
+                                <li><strong>Bureau des Assemblées :</strong> Gestion complète des assemblées délibérantes avec signature électronique</li>
+                                <li><strong>eFluoPrésences :</strong> App mobile iOS/Android (Cordova, Xamarin, WebAPI v2) avec mode déconnecté</li>
+                                <li>Stack : ASP.NET MVC 5, SQL Server, Telerik Kendo UI</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Héliantis</div>
+                            <div class="job-title">Développeur Logiciel Web</div>
+                            <div class="job-duration">Octobre 2009 - Octobre 2017 (8 ans 1 mois)</div>
+                            <div class="job-location">Région de Pau</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <h4>🏢 Intranet TOTAL EP</h4>
+                            <ul>
+                                <li>Applications Congrès et Écoles v2 (PHP5/Zend, ExtJS)</li>
+                                <li>Intégration ActiveDirectory et Google Maps API</li>
+                                <li>Applications mobiles iPhone/Android (PhoneGap, jQuery Mobile)</li>
+                                <li>Développement SharePoint 2010 et services ASP.NET</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Otidea</div>
+                            <div class="job-title">Développeur Web</div>
+                            <div class="job-duration">Janvier 2006 - Octobre 2009 (3 ans 10 mois)</div>
+                            <div class="job-location">Région de Tarbes</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li>Développement Framework MVC interne et CMS (PHP/MySQL)</li>
+                                <li>Système de routing, vues Smarty, composants réutilisables</li>
+                                <li>Management d'équipe et méthodologies de développement</li>
+                                <li>Module e-Commerce basé sur framework propriétaire</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">JVS-ADIX</div>
+                            <div class="job-title">Développeur Logiciels</div>
+                            <div class="job-duration">Janvier 2004 - Janvier 2005 (1 an 1 mois)</div>
+                            <div class="job-location">Région de Tarbes</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li>Développement 4D : gestion frais de déplacement et ordres de mission</li>
+                                <li>Architecture Web connectée via connecteurs PHP</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="company-name">Profession Libérale</div>
+                            <div class="job-title">Développeur / Technicien Informatique</div>
+                            <div class="job-duration">2001 - 2003 (2 ans)</div>
+                            <div class="job-location">Région de Tarbes</div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <ul>
+                                <li>Logiciel cabinet d'avocat (Access/VBA) : facturation, comptabilité, CRM</li>
+                                <li>Formation Windows/Office, maintenance et assemblage PC</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h3 class="section-title">Compétences Techniques</h3>
+                    
+                    <h4>Langages & Frameworks</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">C#</div>
+                        <div class="skill-item">.NET Core</div>
+                        <div class="skill-item">PHP</div>
+                        <div class="skill-item">TypeScript</div>
+                        <div class="skill-item">Angular</div>
+                        <div class="skill-item">Node.js</div>
+                        <div class="skill-item">Blazor</div>
+                        <div class="skill-item">SignalR</div>
+                    </div>
+                    
+                    <h4>Bases de Données</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">PostgreSQL</div>
+                        <div class="skill-item">SQL Server</div>
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">Redis</div>
+                        <div class="skill-item">Elasticsearch</div>
+                    </div>
+                    
+                    <h4>DevOps & Cloud</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">Docker</div>
+                        <div class="skill-item">Podman</div>
+                        <div class="skill-item">GitLab CI/CD</div>
+                        <div class="skill-item">Azure</div>
+                    </div>
+
+                    <h4>Méthodologies</h4>
+                    <div class="skills-grid">
+                        <div class="skill-item">Scrum</div>
+                        <div class="skill-item">TDD</div>
+                        <div class="skill-item">MVVM</div>
+                        <div class="skill-item">Agile</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Certifications</h3>
+                    <div class="cert-item">
+                        <h4>MCTS: .NET Framework 4</h4>
+                        <div>Web Applications</div>
+                    </div>
+                    <div class="cert-item">
+                        <h4>MCPS</h4>
+                        <div>Microsoft Certified Professional</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour imprimer ou sauvegarder en PDF
+        function printCV() {
+            window.print();
+        }
+        
+        // Ajouter un bouton d'impression pour la version écran
+        if (window.screen && window.screen.width > 768) {
+            document.addEventListener('DOMContentLoaded', function() {
+                const printButton = document.createElement('button');
+                printButton.textContent = '🖨️ Imprimer / Sauver en PDF';
+                printButton.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 12px 20px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-family: inherit;
+                    font-size: 14px;
+                    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+                    z-index: 1000;
+                `;
+                printButton.onclick = printCV;
+                document.body.appendChild(printButton);
+                
+                // Masquer le bouton à l'impression
+                const style = document.createElement('style');
+                style.textContent = '@media print { button { display: none !important; } }';
+                document.head.appendChild(style);
+            });
+        }
+    </script>
+</body>
+</html>
