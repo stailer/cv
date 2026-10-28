@@ -6,8 +6,13 @@
     <title>Jean-François CAMBOT - Senior FullStack Developer</title>
     <style>
         @page {
-            margin: 0;
+            margin: 12mm 0;
             size: A4;
+        }
+
+        /* En-tête bord à bord sur la première page */
+        @page :first {
+            margin-top: 0;
         }
         
         * {
@@ -98,7 +103,7 @@
         }
 
         .left-column {
-            padding: 30px 35px;
+            padding: 25px 35px;
         }
 
         .right-column {
@@ -108,7 +113,7 @@
         }
 
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .section-title {
@@ -133,8 +138,8 @@
         }
 
         .experience-item {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
             border-bottom: 1px solid #e9ecef;
             page-break-inside: avoid;
         }
@@ -145,7 +150,7 @@
         }
 
         .job-header {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .company-name {
@@ -174,13 +179,13 @@
         }
 
         .job-description {
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
         .job-description h4 {
             font-weight: 600;
             color: #333;
-            margin: 12px 0 6px 0;
+            margin: 8px 0 4px 0;
             font-size: 0.9rem;
         }
 
@@ -190,7 +195,7 @@
         }
 
         .job-description li {
-            margin-bottom: 6px;
+            margin-bottom: 3px;
             padding-left: 15px;
             position: relative;
             font-size: 0.85rem;
@@ -264,7 +269,7 @@
             }
 
             .job-header,
-            .job-description ul {
+            .job-description li {
                 break-inside: avoid;
             }
             
