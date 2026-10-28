@@ -257,12 +257,29 @@
                 margin: 0;
             }
             
+            /* Une expérience peut se couper entre deux blocs, sinon les longues
+               expériences laissent de grands vides en bas de page */
             .experience-item {
+                break-inside: auto;
+            }
+
+            .job-header,
+            .job-description ul {
                 break-inside: avoid;
             }
             
-            .section {
+            /* Pas de break-inside sur .section : la section Expérience dépasse une page
+               et Chrome repousse alors toute la grille sous l'en-tête */
+            .skills-grid,
+            .cert-item {
                 break-inside: avoid;
+            }
+
+            .section-title,
+            .job-header,
+            .job-description h4,
+            .right-column h4 {
+                break-after: avoid;
             }
         }
 
